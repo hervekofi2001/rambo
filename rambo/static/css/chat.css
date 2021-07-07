@@ -1,0 +1,19 @@
+body {
+    color: #fff;
+    background-color: #000;
+}
+
+.chat {
+    width: 35%;
+    height: 500px;
+    background-color: #000;
+    border: 1px grey solid ;
+    margin: 5% 30% ;
+}
+
+.chat .res {
+    height: 70px;
+    background-color: #fff;
+    position: relative;
+        bottom: -90%;
+}

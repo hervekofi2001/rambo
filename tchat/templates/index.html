@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Stockage Mesure</title>
+   
+  </head>
+  <body class="bg-gray">
+        <h1 class="text-center mt-3 text-"> Bienvenue sur notre application</h1>
+        <!-- Card -->
+        <div class="container">
+            <div class="row">
+                {% for article in list_articles %}
+                    <div class="col-3" style="margin-bottom:20px;">
+                      <div class="card">
+                    <!-- Card image -->
+                        <img class="card-img-top" src= "{{article.image.url}}" alt="Card image cap" style="height:120px; width:120px;margin:10px auto;">
+                        <!-- Card content -->
+                        <div class="card-body">
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="{%url 'detail' article.id%}">{{article.title}}</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">{{article.descrp}}</p>
+                            <p class="card-text"> publié il y a {{article.created_at|timesince }}</p>
+                            <!-- Button -->
+                            <a href="{%url 'detail' article.id%}" class="btn btn-primary">lire la suite</a>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+<!-- Card -->
+   <script>
+      var a = document.getElementById('disc-50');
+      a.onclick = function () {
+        Clipboard_CopyTo("T9TTVSQB");
+        var div = document.getElementById('code-success');
+        div.style.display = 'block';
+        setTimeout(function () {
+          document.getElementById('code-success').style.display = 'none';
+        }, 900);
+      };
+
+      function Clipboard_CopyTo(value) {
+        var tempInput = document.createElement("input");
+        tempInput.value = value;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+      }
+    </script>
+
+    
+  </body>
+</html>
+{%endblock%}
