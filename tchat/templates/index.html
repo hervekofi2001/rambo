@@ -8,12 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Stockage Mesure</title>
-   
   </head>
   <body class="bg-gray">
         <h1 class="text-center mt-3 text-"> Bienvenue sur notre application</h1>
         <!-- Card -->
-        <div class="container">
+        <div class="container bg-gray">
             <div class="row">
                 {% for article in list_articles %}
                     <div class="col-3" style="margin-bottom:20px;">
@@ -46,7 +45,6 @@
           document.getElementById('code-success').style.display = 'none';
         }, 900);
       };
-
       function Clipboard_CopyTo(value) {
         var tempInput = document.createElement("input");
         tempInput.value = value;
@@ -56,8 +54,6 @@
         document.body.removeChild(tempInput);
       }
     </script>
-
-    
   </body>
 </html>
-{%endblock%}
+{% endblock %}

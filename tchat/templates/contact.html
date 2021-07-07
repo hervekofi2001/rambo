@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<form class="offset-4 col-5 mt-5" method="post"  action="">
+<div class="container">
+<div class="col">
+<div class="offset-3 col-6 mt-5 shadow p-3 mb-5 bg-body rounded border bg-white" style="padding:30px;">
+<form method="post"  action="" class="">
+      <center class="text-dark"><h2> Formulaire de contact</h2></center>
+      <hr>
 {% csrf_token %}
   <!-- 2 column grid layout with text inputs for the first and last names -->
-  <div class="row mb-4">
+  <div class="row mb-4 text-dark">
     <div class="col">
       <div class="form-outline">
         <input type="text" id="form3Example1" name="nom" class="form-control" />
@@ -19,17 +24,17 @@
   </div>
 
   <!-- Email input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4 text-dark">
     <input type="email" id="form3Example3"  name ="email" class="form-control" />
     <label class="form-label" for="form3Example3">address mail</label>
   </div>
 
   <!-- Password input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4 text-dark">
     <input type="password" id="form3Example4" name="motdepass" class="form-control" />
     <label class="form-label" for="form3Example4">Mot de pass</label>
   </div>  
-  <div class="col">
+  <div class="form-outline mb-4 text-dark">
       <div class="form-outline">
         <input type="text" id="form3Example1" name="localisation" class="form-control" />
         <label class="form-label" for="form3Example1">Localisation</label>
@@ -40,6 +45,9 @@
   <!-- Submit button -->
   <button type="submit" class="btn btn-primary mb-4">envoyer</button>
 </form>
+</div>
+</div>
+</div>
 
   <div id="mapid" style="height: 200px;" class="offset-4"></div>
 
