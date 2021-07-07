@@ -2,11 +2,12 @@
 {% block content %}
 {% load static %}
 <div class="container">
-<div style="clear:both; height: 50px">&nbsp;</div>
+<div style="clear:both; height: 20px">&nbsp;</div>
 
     <!-- 2 column grid layout with text inputs for the first and last names -->
   <div class="row">
-  
+  <div class="text-dark text-center" style="padding:10px; margin:0;font-size:20px;width:100%;">&nbsp; <h2>Liste des mesures enregistrées</h2></div>
+  <div style="clear:both; height: 20px">&nbsp;</div>
   <table id="table" class="table table-striped table-bordered table-white" style="width:100%;">
     <thead class="thead-dark">
     <tr>
@@ -24,12 +25,12 @@
       {% for reflecto in liste_mesures %}
       <tr>
         <td>{{reflecto.NumFiber}}</td>
-        <td>{% if reflecto.PerteConnecteur >= '5' %}{{reflecto.PerteConnecteur}} [Mauvaise] {% else %}{{reflecto.PerteConnecteur}}{% endif %}</td>
-        <td>{% if reflecto.CumuleConnecteur >= '5' %}{{reflecto.CumuleConnecteur}} [Mauvaise] {% else %}{{reflecto.CumuleConnecteur}}{% endif %}</td>
-        <td>{% if reflecto.PerteDistance >= '5' %}{{reflecto.PerteDistance}} [Mauvaise] {% else %}{{reflecto.PerteDistance}}{% endif %}</td>
-        <td>{% if reflecto.CumuleDistance >= '5' %}{{reflecto.CumuleDistance}} [Mauvaise] {% else %}{{reflecto.CumuleDistance}}{% endif %}</td>
-        <td>{% if reflecto.BilanPertes >= '5' %}{{reflecto.BilanPertes}} [Mauvaise] {% else %}{{reflecto.BilanPertes}}{% endif %}</td>
-        <td>{% if reflecto.Episure >= '0.1' %}{{reflecto.Episure}} [Mauvaise] {% else %}{{reflecto.Episure}}{% endif %}</td>
+        <td>{% if reflecto.PerteConnecteur >= '5' %}{{reflecto.PerteConnecteur}} dB [Mauvaise] {% else %}{{reflecto.PerteConnecteur}} dB{% endif %}</td>
+        <td>{% if reflecto.CumuleConnecteur >= '5' %}{{reflecto.CumuleConnecteur}} dB [Mauvaise] {% else %}{{reflecto.CumuleConnecteur}} dB{% endif %}</td>
+        <td>{% if reflecto.PerteDistance >= '5' %}{{reflecto.PerteDistance}} dB [Mauvaise] {% else %}{{reflecto.PerteDistance}} dB{% endif %}</td>
+        <td>{% if reflecto.CumuleDistance >= '5' %}{{reflecto.CumuleDistance}} dB [Mauvaise] {% else %}{{reflecto.CumuleDistance}} dB{% endif %}</td>
+        <td>{% if reflecto.BilanPertes >= '5' %}{{reflecto.BilanPertes}} dB [Mauvaise] {% else %}{{reflecto.BilanPertes}} dB{% endif %}</td>
+        <td>{% if reflecto.Episure >= '0.1' %}{{reflecto.Episure}} dB [Mauvaise] {% else %}{{reflecto.Episure}} dB{% endif %}</td>
         <td>
             <a href="{{reflecto.photo.url}}" class="btn btn-success text-white">Voir plus</a>
         </td>

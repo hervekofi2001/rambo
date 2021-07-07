@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Logiciel Stockage mesure administration {% endblock %}
+
+{% block extrastyle %}
+<style>
+    #header{
+        background: linear-gradient(180deg, #01A1BD 0%, #215383 100%);
+    }
+    .module h2, .module caption, inline-group h2{
+    }
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Administration logiciel Stockage mesure</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
