@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="col">
+<div class="offset-3 col-6 mt-5 shadow p-3 mb-5 bg-body rounded border bg-white" style="padding:30px;">
+<form method="post" enctype="multipart/form-data" action="" class="">
+      <center class="text-dark"><h2> Formulaire de mesure</h2></center>
+      <hr>
+{% csrf_token %}
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  
+ <div class="form-outline mb-4 text-dark">
+    <input type="number" id="form3Example3"  name ="NumFib" class="form-control" />
+    <label class="form-label" for="form3Example3">NumFib</label>
+  </div>
+   <div class="form-outline mb-4 text-dark">
+    <input type="number" step="0.0001" id="form3Example3" min =""name ="PerteConnecteur" class="form-control" />
+    <label class="form-label" for="form3Example3">PerteConnecteur</label>
+  </div>
+  <!-- Email input -->
+  <div class="form-outline mb-4 text-dark">
+    <input type="number" step="0.0001" id="form3Example3"  name ="CumuleConnecteur" class="form-control" />
+    <label class="form-label" for="form3Example3">CumuleConnecteur</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4 text-dark">
+    <input type="number" step="0.0001" id="form3Example4" name="PerteDistance" class="form-control" />
+    <label class="form-label" for="form3Example4">PerteDistance</label>
+  </div>  
+  <div class="form-outline mb-4 text-dark">
+      <div class="form-outline">
+        <input type="number" step="0.0001" id="form3Example1" name="CumuleDistance" class="form-control" />
+        <label class="form-label" for="form3Example1">CumuleDistance</label>
+      </div>
+    </div>
+    <div class="form-outline mb-4 text-dark">
+      <div class="form-outline">
+        <input type="number" step="0.0001" id="form3Example1" name="BilanPerte" class="form-control" />
+        <label class="form-label" for="form3Example1">BilanPerte</label>
+      </div>
+    </div>
+     <div class="form-outline mb-4 text-dark">
+      <div class="form-outline">
+        <input type="number" step="0.0001" id="form3Example1" name="LongueurCable" class="form-control" />
+        <label class="form-label" for="form3Example1">LongueurCable</label>
+      </div>
+  
+    <div class="form-outline mb-4 text-dark">
+      <div class="form-outline">
+        <input type="number" step="0.0001" id="form3Example1" max ="0.1" name="Episure" class="form-control" />
+        <label class="form-label" for="form3Example1">Episure</label>
+      </div>
+
+    <div class="form-outline mb-4 text-dark">
+      <div class="form-outline">
+        <input type="file" name="rapport" id="rapport" class="form-control" />
+        <label class="form-label" for="rapport">Rapport</label>
+      </div>
+    </div>
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary mb-4">envoyer</button>
+</form>
+</div>
+</div>
+</div>
+
+  <div id="mapid" style="height: 200px;" class="offset-4"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
+  <script>
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a hrepath('contact/',contact,name ="contact"),f="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'your.mapbox.access.token'
+  }).addTo(mymap);
+
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+  </script>
+
+  <script>
+    navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById("gps").value = position.coords.latitude + ';' + position.coords.longitude ;
+      });
+</script>
+{% endblock %}

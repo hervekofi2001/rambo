@@ -18,6 +18,7 @@
       <th>CumuleDistance</th>
       <th>BilanPerte</th>
       <th>Episure</th>
+      <th>LongueurCable</th>
       <th></th>
     </tr>
     </thead>
@@ -31,8 +32,10 @@
         <td>{% if reflecto.CumuleDistance >= '5' %}{{reflecto.CumuleDistance}} dB [Mauvaise] {% else %}{{reflecto.CumuleDistance}} dB{% endif %}</td>
         <td>{% if reflecto.BilanPertes >= '5' %}{{reflecto.BilanPertes}} dB [Mauvaise] {% else %}{{reflecto.BilanPertes}} dB{% endif %}</td>
         <td>{% if reflecto.Episure >= '0.1' %}{{reflecto.Episure}} dB [Mauvaise] {% else %}{{reflecto.Episure}} dB{% endif %}</td>
+        <td>{{reflecto.LongueurCable}} km </td>
+
         <td>
-            <a href="{{reflecto.photo.url}}" class="btn btn-success text-white">Voir plus</a>
+            <a href="{% url 'rapport' reflecto.pk %}" class="btn btn-success text-white">Voir plus</a>
         </td>
       </tr>
       {% endfor %}

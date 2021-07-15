@@ -46,6 +46,21 @@ class Contact(models.Model):
     def __str__(self):
         return self.nom
 
+class Mesurer(models.Model):
+    NumFiber=models.CharField(max_length=5)
+    PerteConnecteur=models.CharField(max_length=50)
+    CumuleConnecteur=models.CharField(max_length = 50)
+    PerteDistance=models.CharField(max_length=50)
+    CumuleDistance=models.CharField(max_length = 50)
+    BilanPertes=models.CharField(max_length = 50)
+    LongueurCable=models.CharField(max_length = 50)
+    Episure=models.CharField(max_length = 50)
+    rapport = models.CharField(max_length = 255, blank=True, editable=False)
+   
+
+    def __str__(self):
+        return self.NumFiber
+
 class Reflecto(models.Model):
     NumFiber=models.CharField(max_length=5)
     PerteConnecteur=models.CharField(max_length=50)

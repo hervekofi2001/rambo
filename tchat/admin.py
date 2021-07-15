@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Zone
+from .models import Article, Mesurer, Zone
 from .models import Category
 from .models import Contact,Reflecto,Adresse
 from django.contrib.admin import AdminSite
@@ -26,6 +26,14 @@ admin.site.register(Contact)
 admin.site.register(Reflecto)
 admin.site.register(Adresse)
 admin.site.register(Zone)
+admin.site.register(Mesurer)
+
+
+
+
+
+
+
 
 
 # Register your models here.

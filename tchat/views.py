@@ -1,10 +1,10 @@
 from django.db import router
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
-from geocoder.api import location
+from geocoder.api import distance, location
 from pyroutelib3 import Router
 from .models import Article
-from .models import Contact
+from .models import Contact,Mesurer,Reflecto
 from .models import Reflecto
 from .models import Adresse,Zone
 from django.http import HttpResponse
@@ -125,6 +125,20 @@ def login(request):
                      render(request,"login.html")
        return render(request,"login.html")
 
+def loginmesure(request):
+       if request.method== "POST":
+              username=request.POST['username']
+              pwd =request.POST["pwd"]
+              print('le nom est:',username)
+              user = authenticate(username=username,password=pwd)
+              if user is not None:
+                     return redirect("reflecto")
+              else:
+                     messages.error(request,"erreur d'authentification")
+                     render(request,"loginmesure.html")
+       return render(request,"loginmesure.html")
+
+
 def contact(request):
    if request.method=="POST":
           print(request.POST)
@@ -146,9 +160,52 @@ def contact(request):
    return render(request,"contact.html")
 
 def reflecto(request):
-       liste_mesures=Reflecto.objects.all()
+       liste_mesures=Mesurer.objects.all()
        context = {"liste_mesures":liste_mesures}
        return render(request,"reflecto.html",context)
+ 
+def rapport(request, id_mesure):
+       nom = Mesurer.objects.get(pk= id_mesure).rapport
+       return render(request,"rapport.html", {"url":  'rapport/'+nom} )
+
+def handle_uploaded_file(f):  
+
+    import os
+    print("\n\n")
+    os.system("ls ")  
+    with open('static/rapport/'+f.name, 'wb+') as destination:  
+        for chunk in f.chunks():  
+            destination.write(chunk) 
+
+def mesurer(request):
+       if request.method=="POST":
+          print(request.POST)
+          mesurer = Mesurer()
+          NumFiber=request.POST.get('NumFib')
+          PerteConnecteur=request.POST.get('PerteConnecteur')
+          CumuleConnecteur=request.POST.get('CumuleConnecteur')
+          PerteDistance=request.POST.get('PerteDistance')
+          CumuleDistance=request.POST.get('CumuleDistance')
+          BilanPerte= request.POST.get('BilanPerte')
+          LongueurCable= request.POST.get('LongueurCable')
+          Episure= request.POST.get('Episure')
+          Rapport = request.FILES.get('rapport')
+          handle_uploaded_file(Rapport)
+          mesurer.NumFiber = NumFiber
+          mesurer.PerteConnecteur=PerteConnecteur
+          mesurer.CumuleConnecteur=CumuleConnecteur
+          mesurer.PerteDistance = PerteDistance
+          mesurer.Episure= Episure
+          mesurer.LongueurCable=LongueurCable
+          mesurer.BilanPertes=BilanPerte
+          mesurer.CumuleDistance=CumuleDistance
+          mesurer.rapport=Rapport.name
+          mesurer.save()
+         
+
+       return render(request,"mesurer.html")
+
+
        
 
   

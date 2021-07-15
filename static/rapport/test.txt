@@ -1,0 +1,58 @@
+https://assistance.orange.fr/livebox-modem/toutes-les-livebox-et-modems/installer-et-utiliser/brancher-ou-debrancher-votre-livebox-modem/livebox-5-installer-premiere-installation-_286743-827392
+
+
+
+
+
+https://assistance.orange.fr/livebox-modem/toutes-les-livebox-et-modems/depanner/un-probleme-d-acces-a-internet
+
+
+
+https://studio.csml.dev/bots/a8c945bf-af2d-4c6d-b882-422fbd35b398/flows/0a7b1119-15df-49e9-a124-4b280640e991
+
+
+code csml
+
+
+start:
+  say "salut je suis votre Assistance Livebox"
+  goto askname
+  
+askname:
+  say "quelle est votre nom ?"
+  hold
+  say "salut {{event}} je suis enchanté"
+  remember name = event
+goto choices
+
+choices:
+  say Question("que souhaitez vous faire {{name}}?",
+    buttons = [
+      Button( "DEPANNER",accepts=["information","informations"]) as btnPanne,
+      Button( "INSTALLER ET UTILISER") as btnUti,
+      //Buttons("CONSULTER LES FICHES TECHNIQUES"),
+    ]
+  )
+hold
+  if (event match btnPanne)
+  {
+    goto Panne
+  }
+  else if (event match btnUti)
+  {
+    goto Uti
+  }
+  else{
+  say "faites un choix "
+  goto choices
+
+  }
+  Panne:
+    say "1"
+    goto end 
+  Uti:
+    say "2"
+    goto end
+   
+   
+    

@@ -9,5 +9,5 @@ def chat():
         qs=input()
         if(qs == "quitter"):
             break
-        else:
+        else: 
             print(qts[qs])
