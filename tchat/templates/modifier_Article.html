@@ -1,0 +1,17 @@
+{% extends 'base3.html'%}
+{% load static %}
+{% block title %}
+    <title>Éditer l'article</title>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Éditer l'article</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary btn-block"> enregistrer </button>
+    </form>
+
+{% endblock %}

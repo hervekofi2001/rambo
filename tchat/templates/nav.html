@@ -1,8 +1,8 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg" style="background:rgb(60,36,139);">
-
+<a class="navbar-brand" href="/home">Accueil</a>
   <!-- Navbar brand -->
-  <a class="navbar-brand" href="/home">Accueil</a>
+
 
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -10,42 +10,47 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+   
   <!-- Collapsible content -->
   <div class="collapse navbar-collapse" id="basicExampleNav">
-
+   
     <!-- Links -->
-    
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/admin">Admin
           <span class="sr-only">(current)</span>
         </a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/login">connexion</a>
+      
+        <a class="nav-link" href="/loginmesure">mesures</a>
       </li>
+   
+       </li>
       <li class="nav-item">
         <a class="nav-link" href="/contact">contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/loginmesure">mesures</a>
-      </li>
-   
-      <!-- Dropdown -->
-      <li class="nav-item">
         <a class="nav-link" href="/maintenance">maintenance</a>
       </li>
-
     </ul>
-    <!-- Links -->
-
+   
+     
+  <link rel="stylesheet" href="nav.css">
+  
+  
+    {% if user.is_authenticated %}
+    <a  href="{% url 'Logout_url' %}" class="btn btn-info">Deconnexion</a>
+    {% else %}
+    <a  href="{% url 'Login_url' %}" class="btn btn-info">connexion</a>
+    {% endif %}
     <form class="form-inline" action="article/recherche">
       <div class="md-form my-0">
+       
         <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search" name="article">
       </div>
     </form>
   </div>
-  <!-- Collapsible content -->
+  <!-- Collapsible contet -->
 
 </nav>
 <!--/.Navbar-->

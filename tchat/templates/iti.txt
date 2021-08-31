@@ -1,0 +1,86 @@
+       adresses = Adresse.objects.all()
+       #creation d'un objet map
+       m = folium.Map(zoom_start=5,location=[19,-12])
+       #la liste des coordonnées
+       if adresses :
+              points = [ (float(pt.lat), float(pt.lng)) for pt in adresses ]
+              for pt in points :
+                     folium.Marker(pt, tooltip="Click for more",popup="Abidjan").add_to(m)
+              # reponse html du map
+              print(points)
+              folium.PolyLine(points).add_to(m)
+       m = m._repr_html_()
+       zones = Zone.objects.all()
+       print("ZONES ", zones)
+       context ={
+              "m":m,
+              "zones": zones
+       }
+       if request.method.lower() == "get":
+                return render_map(request)
+       elif request.method.lower() == "post" :
+              print("ON EST DANS LE POST", request.POST)
+              adresses=Adresse()
+              lng=request.POST.get('longitude')
+              lat=request.POST.get('latitude')
+              zone=request.POST.get('zone')
+              adresses.lng = lng
+              adresses.lat = lng
+              folium.Polygon(points).add_to(m)
+              adresses.zone = Zone.objects.get(id=int(zone))
+              adresses.save()
+        ox.config(log_console=True, use_cache=True)
+       G_walk = ox.graph_from_place('Manhattan Island, New York City, New York, USA',network_type='walk')
+       orig_node = ox.get_nearest_node(G_walk,(40.748441, -73.985664))
+       dest_node = ox.get_nearest_node(G_walk,(40.748441, -73.4))
+       route = nx.shortest_path(G_walk,orig_node,dest_node,weight='length')
+       route_map = ox.plot_route_folium(G_walk, route)
+       route_map.save('itineraire.html')
+    
+
+
+    {% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Cartes interactives pour les applications Web Django </title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+       crossorigin=""/>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+       crossorigin=""></script>
+       <style type="text/css">
+         #mapid { height: 100vh; }
+       </style>
+  </head>
+  <body>
+    <form method="post" >
+      {% csrf_token %}
+      <input type="text" name = "latitude" placeholder="latitude">
+      <input type="text" name = "longitude" placeholder="longitude">
+      <select name = "zone" required>
+        {% for zone in zones %}
+          <option value="{{zone.id}}">{{zone}}</option>
+        {% endfor %}
+      </select>
+      <button>Enregistrer</button>
+    </form>
+   <div id="mapid"></div>
+   </body>
+ </html>
+
+ <script type="text/javascript">
+   var mymap = L.map('mapid').setView([-7.2561, 4.2637], 13);
+   L.tileLayer('https://tile.openstreetmap.org/${z}/${x}/${y}.png', {
+    maxZoom: 18,
+}).addTo(mymap);
+   var marker = L.marker([-7.2561, 4.2637]).addTo(mymap);
+   {% for pt in points %}
+      L.marker(pt).addTo(mymap)
+   {% endfor %}
+ </script>
+{% endblock %}

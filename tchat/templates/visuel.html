@@ -1,0 +1,44 @@
+{% extends 'base3.html'%}
+{% block content %}
+{% load static %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+					<div class="card-header card-default">
+                            Lightbox2 Gallery
+                        </div>
+                        <div class="card-body">
+                            <div class="lightboxGallery">
+                                <a href="assets/img/gallery/1.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/1s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/2.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/2s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/3.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/3s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/4.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/4s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/2.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/2s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/3.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/3s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/4.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/4s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/2.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/2s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/4.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/4s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/2.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/2s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/3.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/3s.jpg'%}  " alt=""></a>
+                                <a href="assets/img/gallery/1.jpg" title="Unsplash Images" data-lightbox="gallery"><img src="{% static 'assets/img/gallery/1s.jpg'%}  " alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            <!-- Common Plugins -->
+        <script src="{%static 'assets/lib/jquery/dist/jquery.min.js'%}"></script>
+        <script src="{%static 'assets/lib/bootstrap/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'assets/lib/pace/pace.min.js'%}"></script>
+        <script src="{%static 'assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js'%}"></script>
+        <script src="{%static 'assets/lib/slimscroll/jquery.slimscroll.min.js'%}"></script>
+        <script src="{%static 'assets/lib/nano-scroll/jquery.nanoscroller.min.js'%}"></script>
+        <script src="{%static 'assets/lib/metisMenu/metisMenu.min.js'%}"></script>
+        <script src="{%static 'assets/js/custom.js'%}"></script>
+		
+        <!-- Lightbox -->
+        <script src="assets/lib/lightbox2/dist/js/lightbox.min.js"></script>   
+  
+{% endblock content %}
+				

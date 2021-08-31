@@ -2,20 +2,27 @@
 
 {% block title %} connexion {% endblock %}
 
+{% block bootstrap_cdn %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{% endblock bootstrap_cdn %}
+
+{% block nav_bar %}{% endblock nav_bar %}
+
 {% block content %}
 <div class="container">
-    {% if message %}
+    {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-danger"><strong>{{message}}</strong></div>
+    <div class="{{ message.tags }}"><strong>{{message.tags}}</strong></div>
     {% endfor %}
     {% endif %}
     <div class="row">
-    <form action="" method="POST" class="col-md-5"  style="margin:50px auto;">
+    <form method="POST" class="col-md-5"  style="margin:50px auto;">
     {% csrf_token %}
         <div class="card bg-light mt-3">
             <div class="col-md-12 mt-3 ">
                 <div class="card-header text-center">
-                    <h3 class="fas fa-user"> connexion </h3>
+                    <h3  class="fas fa-user"> connexion </h3>
                 </div>   
                 <div class="card-body">
                     <div class="form-group">
@@ -24,6 +31,9 @@
                     <div class="form-group">
                         <input type="password" placeholder="mot de pass" name='pwd'class='form-control'>
                     </div>
+                                        
+                   
+            
                 </div>
                 <div class="card footer">
                     <button class='btn btn-primary btn-app'>se connecter</button>

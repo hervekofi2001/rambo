@@ -1,0 +1,413 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FixedPlus - Bootstrap Admin Dashboard Template</title>
+		<link rel="icon" type="image/png" sizes="16x16" href="{% static './assets/img/icon.png' %}">
+		
+        <!-- Common Plugins -->
+       <!-- Common Plugins -->
+        <link href="{% static './assets/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		
+		<!-- Vector Map Css-->
+        <link href="{% static './assets/lib/vectormap/jquery-jvectormap-2.0.2.css' %}" rel="stylesheet' %}" />
+		
+		<!-- Chart C3 -->
+		<link href="{% static 'assets/lib/chart-c3/c3.min.css' %}" rel="stylesheet">
+		<link href="assets/lib/chartjs/chartjs-sass-default.css" rel="stylesheet">
+
+        <!-- DataTables -->
+        <link href="{% static 'assets/lib/datatables/jquery.dataTables.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'assets/lib/datatables/responsive.bootstrap.min.css'%}" rel="stylesheet" type="text/css"> 
+        <link href="{% static 'assets/lib/toast/jquery.toast.min.css' %}" rel="stylesheet">
+	
+        <!-- Custom Css-->
+        <link href="{% static 'assets/scss/style.css' %}" rel="stylesheet">
+        
+    </head>
+    <body>
+
+			<!-- ============================================================== -->
+			<!-- 						Topbar Start 							-->
+			<!-- ============================================================== -->
+			<div class="top-bar primary-top-bar">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col">
+						<a class="admin-logo" href="index-2.html">
+							<h1>
+								<img alt="" src="{% static './assets/img/icon.png '%} " class="logo-icon margin-r-10">
+								<img alt="" src="{% static './assets/img/logo-dark.png'%} " class="toggle-none hidden-xs">
+							</h1>
+						</a>				
+						<div class="left-nav-toggle" >
+							<a  href="#" class="nav-collapse"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="left-nav-collapsed" >
+							<a  href="#" class="nav-collapsed"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="search-form hidden-xs">
+							<form>
+								<input class="form-control" placeholder="rechercher..." type="text">  <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+								
+							</form>
+						</div>
+						<ul class="list-inline top-right-nav">
+							<li class="dropdown icons-dropdown d-none-m">
+								<a class="dropdown-toggle " data-toggle="dropdown" href="#"><i class="fa fa-envelope"></i> <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div></a>
+								
+								<ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
+									<li>
+										<div class="dropdown-header">
+											<a class="float-right" href="#"><small>View All</small></a> Messages
+										</div>
+										
+										<div class="scrollDiv">
+											<div class="notification-list">
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+														<img alt="" class="rounded-circle" src="assets/img/avtar-2.png" width="50">
+													</span> 
+													<span class="notification-title">
+													{{utilisateur}}
+													<label class="label label-warning float-right">Support</label>
+													</span> 
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span> 
+													<span class="notification-time">15 minutes ago</span>
+												</a>
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+													<img alt="" class="rounded-circle" src="assets/img/avtar-3.png" width="50">
+													</span> 
+													<span class="notification-title">
+													Govindo Doe 
+													<label class="label label-warning float-right">Support</label>
+													</span> 
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span> 
+													<span class="notification-time">15 minutes ago</span>
+												</a> 
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+													<img alt="" class="rounded-circle" src="assets/img/avtar-4.png" width="50">
+													</span> 
+													<span class="notification-title">
+													Megan Doe 
+													<label class="label label-warning float-right">Support</label>
+													</span>
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a> 
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+													<img alt="" class="rounded-circle" src="assets/img/avtar-5.png" width="50">
+													</span>
+													<span class="notification-title">
+													Hritik Doe 
+													<label class="label label-warning float-right">Support</label>
+													</span>
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a>
+												
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown icons-dropdown d-none-m">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bell"></i> <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div></a>
+								<ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
+									<li>
+										<div class="dropdown-header">
+											<a class="float-right" href="#"><small>View All</small></a> Notifications
+										</div>
+										<div class="scrollDiv">
+											<div class="notification-list">
+											
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+														<i class="icon-cloud-upload text-primary"></i>
+													</span>
+													<span class="notification-title">Upload Complete</span> 
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a> 
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+														<i class="icon-info text-warning"></i>
+													</span>
+													<span class="notification-title">Storage Space low</span>
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a>
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+														<i class="icon-check text-success"></i>
+													</span>
+													<span class="notification-title">Project Task Complete</span>
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a>
+												
+												<a class="clearfix" href="javascript:%20void(0);">
+													<span class="notification-icon">
+														<i class=" icon-graph text-danger"></i>
+													</span>
+													<span class="notification-title">CPU Usage</span>
+													<span class="notification-description">Lorem Ipsum is simply dummy text of the printing.</span>
+													<span class="notification-time">15 minutes ago</span>
+												</a>
+												
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a class="right-sidebar-toggle d-none-m" href="javascript:%20void(0);"><i class="fa fa-align-right"></i></a>
+							</li>
+							<li class="dropdown avtar-dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<img alt="" class="rounded-circle" src="assets/img/avtar-2.png" width="30">
+									{{ user.username }}
+								</a>
+								<ul class="dropdown-menu top-dropdown">
+									<li>
+										<a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-bell"></i> Activities</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-user"></i> Profile</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-settings"></i> Settings</a>
+									</li>
+									<li class="dropdown-divider"></li>
+									<li>
+										<a class="dropdown-item" href="/login_url"><i class="icon-logout"></i> Logout</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ============================================================== -->
+		<!--                        Topbar End                              -->
+		<!-- ============================================================== -->
+		
+		
+		<!-- ============================================================== -->
+		<!--                        Right Side Start                        -->
+		<!-- ============================================================== -->
+		<nav class="toggle-sidebar" id="right-sidebar-toggle">
+			<div class="nano">
+				<div class="nano-content">
+					<div>
+						<ul class="list-inline nav-tab-card clearfix" role="tablist">
+							
+							<li class="active" role="presentation">
+								<a aria-controls="friends" data-toggle="tab" href="#friends" role="tab">Friends</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="friends" role="tabcard">
+								<ul class="list-unstyled sidebar-contact-list">
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-2.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>{{User.username}}</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-1.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Govinda Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-danger circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-3.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Megan Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-4.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Hritik Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-5.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Bianca Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-6.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>{{user.username}}</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-1.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Govinda Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li class="clearfix">
+										<a class="media-box" href="#"><span class="float-right"><span class="circle circle-danger circle-lg"></span></span> <span class="float-left">
+										 <img alt="user" class="media-box-object rounded-circle" src="assets/img/avtar-2.png" width="50"></span>
+										 <span class="media-box-body"><span class="media-box-heading"><strong>Megan Doe</strong><br>
+										<small class="text-muted">Designer</small></span></span></a>
+									</li>
+									<li>
+										<div class=" text-center">
+											<a class="btn btn-teal" href="javascript:void(0);" title="See more contacts">Load more..</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- ============================================================== -->
+		<!--                        Right Side End                          -->
+		<!-- ============================================================== -->
+		
+
+        <!-- ============================================================== -->
+		<!-- 						Navigation Start 						-->
+		<!-- ============================================================== -->
+        <div class="main-sidebar-nav default-navigation">
+            <div class="nano">
+                <div class="nano-content sidebar-nav">
+				
+					<div class="card-body border-bottom text-center nav-profile">
+						<div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <img alt="profile" class="margin-b-10  " src="{% static './assets/img/avtar-2.png'%} " width="80">
+                        <p class="lead margin-b-0 toggle-none">{{ user.username }}</p>
+                        <p class="text-muted mv-0 toggle-none">Welcome</p>						
+                    </div>
+					
+                    <ul class="metisMenu nav flex-column" id="menu">
+                        <li class="nav-heading"><span>MAIN</span></li>
+						<li class="nav-item active"><a class="nav-link" href="/dashbord"><i class="fa fa-home"></i> <span class="toggle-none">Dashboard admin<span class="badge badge-pill badge-danger float-right mr-2">1.0</span></span></a></li>						
+                        <li class="nav-item">
+                           
+                        </li>
+						 
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">parcourir <span class="fa arrow"></span></span></a>
+                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/pageadmin2">liste contacts</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/pageadmin1">liste mesures</a></li>
+								<li class="nav-item"><a class="nav-link" href="/pageadmin4">liste des techniciens</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/pageadmin3">liste des articles</a></li>
+                            </ul>
+                        </li>
+						
+						<li class="nav-item">
+                            <a class="nav-link" href="chatmaps" aria-expanded="false"><i class="fa fa-bar-chart"></i> <span class="toggle-none">statistic <span class="fa arrow"></span>  <span class="badge badge-pill badge-success float-right mr-2">7</span></span></a>
+                                                                                              
+                        </li>
+						
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-map-marker"></i> <span class="toggle-none">Maps <span class="fa arrow"></span></span></a>
+                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/itineraire">Vector map</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/chatmaps">Google map</a></li>
+                            </ul>
+                        </li>
+						
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+		<!-- 						Navigation End	 						-->
+		<!-- ============================================================== -->
+
+			
+		<!-- ============================================================== -->
+		<!-- 						Content Start	 						-->
+		<!-- ============================================================== -->
+		<div class="row page-header">
+				<div class="col-lg-6 align-self-center ">
+				  <h2>Dashboard</h2>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active">accueil</li>
+					</ol>
+				</div>
+				<div class="col-lg-6 align-self-center text-right">
+					<a href="#" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+				</div>
+		</div>
+		
+        <section class="main-content">
+            
+			{%block content%}
+
+
+			{%endblock content%}
+				
+            <footer class="footer">
+                <span>Copyright &copy; 2018 FixedPlus</span>
+            </footer>
+
+        </section>
+        <!-- ============================================================== -->
+		<!-- 						Content End		 						-->
+		<!-- ============================================================== -->
+
+		
+        <!-- Common Plugins -->
+        <script src="{% static 'assets/lib/jquery/dist/jquery.min.js'%}"> </script>
+		<script src="{% static 'assets/lib/bootstrap/js/popper.min.js'%}">  </script>
+        <script src="{% static  'assets/lib/bootstrap/js/bootstrap.min.js'%}"> </script>
+        <script src="{% static 'assets/lib/pace/pace.min.js'%}"> </script>
+        <script src="{% static 'assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js'%}">  </script>
+        <script src="{% static 'assets/lib/slimscroll/jquery.slimscroll.min.js'%}">  </script>
+        <script src="{% static 'assets/lib/nano-scroll/jquery.nanoscroller.min.js'%}">  </script>
+        <script src="{% static 'assets/lib/metisMenu/metisMenu.min.js'%}"> </script>
+        <script src="{% static 'assets/js/custom.js'%}"> </script>
+		
+	
+			
+        <!--Chart Script-->
+        <script src=" {% static 'assets/lib/chartjs/chart.min.js'%}"></script>
+		<script src="{% static 'assets/lib/chartjs/chartjs-sass.js'%}"></script>
+
+		<!--Vetor Map Script-->
+		<script src=" {% static 'assets/lib/vectormap/jquery-jvectormap-2.0.2.min.js'%}"></script>
+        <script src=" {% static 'assets/lib/vectormap/jquery-jvectormap-us-aea-en.js'%}"></script>
+		
+		<!-- Chart C3 -->
+        <script src=" {% static 'assets/lib/chart-c3/d3.min.js'%}"></script>
+        <script src=" {% static 'assets/lib/chart-c3/c3.min.js'%}"></script>
+	
+        <!-- Datatables-->
+        <script src="{% static 'assets/lib/datatables/jquery.dataTables.min.js'%}"></script>
+        <script src="{% static 'assets/lib/datatables/dataTables.responsive.min.js'%}"></script>
+        <script src="{% static 'assets/lib/toast/jquery.toast.min.js '%}"></script>
+        <script src="{% static 'assets/js/dashboard.js'%}"></script>
+				
+    </body>
+
+<!-- Mirrored from www.aksisweb.com/theme/fixed/layouts-1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 29 Jul 2021 22:29:36 GMT -->
+</html>

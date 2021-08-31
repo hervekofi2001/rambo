@@ -1,25 +1,31 @@
+
+from django.contrib.messages.api import error, success
 from django.db import router
+from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
-from geocoder.api import distance, location
-from pyroutelib3 import Router
-from .models import Article
-from .models import Contact,Mesurer,Reflecto
+from django.contrib import admin, messages
+from .models import Article, Category, Technicien
+from .models import Contact,Mesurer,Reflecto, User
+from django.contrib.auth.models import User
 from .models import Reflecto
 from .models import Adresse,Zone
-from django.http import HttpResponse
-from .chat2 import chat
-from django.contrib.auth import authenticate
+from django.http import HttpResponse, request
+from django.views.generic.edit import UpdateView,CreateView,DeleteView
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-import folium
-import geocoder
+from django import forms
 import os
 
+from .forms import LoginForm
+from.forms import ArticleForm,TechForm
 
-def home(request):
-   list_articles = Article.objects.all()
-   context = {"list_articles":list_articles}
-   return render(request,"index.html",context)
+
+
+def home(request):      
+       list_articles = Article.objects.all()
+       context = {"list_articles":list_articles}
+       return render(request,"index.html",context)
 
 
 def detail(request,id_article):
@@ -32,6 +38,7 @@ def detail(request,id_article):
 def search(request):
    query = request.GET["article"]
    list_article=Article.objects.filter(title=query)
+   #QuerySet.delete()
    return render(request,"search.html",{"list_article":list_article})
 
 def maintenance(request):
@@ -40,20 +47,15 @@ def maintenance(request):
 def render_map(request):
        adresses = Adresse.objects.all()
        #creation d'un objet map
-       m = folium.Map(zoom_start=5,location=[19,-12])
+      
        #la liste des coordonnées
        if adresses :
-              points = [ (float(pt.lat), float(pt.lng)) for pt in adresses ]
-              for pt in points :
-                     folium.Marker(pt, tooltip="Click for more",popup="Abidjan").add_to(m)
-              # reponse html du map
-              print(points)
-              folium.PolyLine(points).add_to(m)
-       m = m._repr_html_()
+              points = [ [ float(pt.lat), float(pt.lng) ] for pt in adresses ]
+              
        zones = Zone.objects.all()
        print("ZONES ", zones)
        context ={
-              "m":m,
+              "points":points,
               "zones": zones
        }
        return render(request,"chatmaps.html", context)	
@@ -72,58 +74,40 @@ def chatmaps(request):
               adresses.zone = Zone.objects.get(id=int(zone))
               adresses.save()
               return redirect("chatmaps")
+
+              
               
 def itineraire(request):
-       m= folium.Map(location=[1.1 , 1.23], zoom_start=15)
-       ptdepart = [ 50.72046, 1.61538]
-       ptarrivé =  [1.1 , 1.23]
-       folium.Marker(ptdepart, popup= "depart").add_to(m)
-       folium.Marker(ptarrivé, popup="arrivé").add_to(m)
-       m = m._repr_html_()
-       context ={
-              "m":m,
+       ptdepart = [ 	5.316667,-4.033333]
+       ptarrivé =  [5.316667,-4.033333]
+       gps = Contact.objects.last().gps
+       print(gps)
+       if gps:
+              ptarrivé = f"{gps}".split(";")
+       context = {
+          "depart": ptdepart,
+          "arrivee": ptarrivé
        }
-       print("routageeeeeee!!!!!!")
-       router = Router("foot")
-       depart = router.findNode(ptdepart[0], ptdepart[1])
-       print(depart)
-
-       arrivé = router.findNode(ptarrivé[0], ptarrivé[1])
-       print(arrivé)
-      
-       routeLatLons=[ptdepart,ptarrivé]
-       status, route = router.doRoute(depart, arrivé)
-       if status == "succes":
-              print("routetrouvée")
-              routeLatLons = list(map(router.nodeLatLon, route))
-       else:
-              print("route non trouvée")
-
-       print(routeLatLons)
-       for pt in routeLatLons:
-              pt  =  list(pt)
-              folium.CircleMarker(pt, radius= 3, fill = True, color  = "red").add_to(m)
-   
-       folium.PolyLine(routeLatLons, color="blue", weight=2.5, opacity=1).add_to(m)
-
-       print("Le fichier HTML/CARTE est disponible")
-
-       m.save('itineraire.html')
+       print(context)
        return render(request,"itineraire.html", context)
 
+""" def login(request):
 
-def login(request):
        if request.method== "POST":
               username=request.POST['username']
               pwd =request.POST["pwd"]
+              acteur =request.POST["choix"]
+              print(acteur)
               print('le nom est:',username)
-              user = authenticate(username=username,password=pwd)
+              user = authenticate(username=username,password=pwd,choix =acteur)
               if user is not None:
-                     return redirect("home")
+                     
+                     return redirect("home") 
               else:
                      messages.error(request,"erreur d'authentification")
                      render(request,"login.html")
-       return render(request,"login.html")
+
+       return render(request,"login.html") """
 
 def loginmesure(request):
        if request.method== "POST":
@@ -205,7 +189,116 @@ def mesurer(request):
 
        return render(request,"mesurer.html")
 
-
        
+def LoginView(request):
+        
+       if request.POST:
+              form = LoginForm(request.POST)
+              if form.is_valid():
+                     username = form.cleaned_data.get('username')
+                     pwd = form.cleaned_data.get('pwd')
+                     user = authenticate(username='username', password='pwd')
+                     if user:
+                            login(request, user)
+                            return redirect('home')
+                     else:
+                           
+                            messages.add_message(request, messages.ERROR, 'Over 9000!',extra_tags='nom utulisateur ou mot de passe incorrecte!')
+       return render(request, "login.html")
+
+def LogoutView(request):
+
+       logout(request)
+       return redirect('/Login_url')
+
+
+
+
+def adminView1(request):
+       
+       mesures= Mesurer.objects.all()
+       context = {"liste_mesures":mesures}
+       return render(request,'pageadmin.html',context)
+
+def adminView2(request): 
+       contacts = Contact.objects.all()
+       context= {"contacts" :contacts}
+       return render(request,"pageadmin2.html",context)
+
+def adminView3(request):
+       articles = Article.objects.all()
+       context= {"articles" : articles }
+       utilisateur = User.objects.first()
+       return render(request,'pageadmin3.html',context)
+
+def adminView4(request):
+       techniciens = Technicien.objects.all()
+       context= {"techniciens" : techniciens }
+       return render(request,'pageadmin4.html',context)
+
+class ajouterArticle(CreateView):
+       model=Article
+       form_class=ArticleForm
+       template_name="ajouter_article.html"
+       success_url= "pageadmin3"
+
+       def form_valid(self, form):
+              self.Article = form.save()
+              messages.success(self.request,
+              "Votre profil a été mis à jour avec succès.") 
+              return redirect('/pageadmin3')
+
+class CreaTech(CreateView):
+       model=Technicien
+       form_class=TechForm
+       template_name="technicien.html"
+       success_url= "technicien"
+
+       def form_valid(self, form):
+              self.Technicien = form.save()
+              messages.success(self.request,
+              "Votre profil a été mis à jour avec succès.") 
+              return redirect('/creer_technicien')
+
+
+
+def supprimerArticle(request,id_article):
+       id = id_article
+       article =  Article.objects.get(id=id_article)
+       article.delete()
+       return redirect('/pageadmin3')
+
+
+class modifierArticle(UpdateView):
+       model=Article
+       template_name="modifier_Article.html"
+       success_url= "pageadmin3"
+       fields = ['title','category','descrp','image']
+
+       def form_valid(self, form):
+              self.Article = form.save()
+              messages.success(self.request,
+              "Votre profil a été mis à jour avec succès.") 
+              return redirect('/pageadmin3')
 
   
+
+def visuel(request):
+        
+       return render(request, "visuel.html")
+
+def dashbord(request):
+       client=Contact.objects.all().count()
+       technicien =Technicien.objects.all().count()
+       mesure = Mesurer.objects.all().count()
+       article =Article.objects.all().count()
+       adresse =Adresse.objects.all().count()
+       context = { 'client':client,'mesure':mesure,'technicien':technicien, 'article':article,'adresse':adresse}
+       return render(request, "dashbord.html",context)
+
+       #def testadmin(request,id):
+              #id=id
+              #articles=Article.objects.get(id=id)
+              #articles.delete()
+
+

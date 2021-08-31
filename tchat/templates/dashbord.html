@@ -1,0 +1,213 @@
+{% extends 'base3.html'%}
+{% block content %}
+{% load static %}
+
+<div class="row">
+                <div class="col">
+                    <div class="widget bg-light padding-0">
+                        <div class="row row-table">
+                            <div class="col-xs-4 text-center padding-15 bg-primary">
+                                <em class="icon-bag fa-3x"></em>
+                            </div>
+                            <div class="col-xs-8 padding-15 text-right">
+                                <h2 class="mv-0">{{mesure}}</h2>
+                                <div class="margin-b-0 text-muted">Mesures</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="widget bg-light padding-0">
+                        <div class="row row-table">
+                            <div class="col-xs-4 text-center padding-15 bg-teal">
+                                <em class="icon-basket fa-3x"></em>
+                            </div>
+                            <div class="col-xs-8 padding-15 text-right">
+                                <h2 class="mv-0">{{article}}</h2>
+                                <div class="margin-b-0 text-muted">articles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="widget bg-light padding-0">
+                        <div class="row row-table">
+                            <div class="col-xs-4 text-center padding-15 bg-success">
+                                <em class="icon-people fa-3x"></em>
+                            </div>
+                            <div class="col-xs-8 padding-15 text-right">
+                                <h2 class="mv-0">{{client}}</h2>
+                                <div class="margin-b-0 text-muted">clients</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="widget bg-light padding-0">
+                        <div class="row row-table">
+                            <div class="col-xs-4 text-center padding-15 bg-indigo">
+                                <em class="icon-pie-chart fa-3x"></em>
+                            </div>
+                            <div class="col-xs-8 padding-15 text-right">
+                                <h2 class="mv-0">{{adresse}}</h2>
+                                <div class="margin-b-0 text-muted">points</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+				<div class="row">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-info">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white">28.064</h1>
+                                <h6 class="text-white">Sessions</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-success ">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white">{{client}}</h1>
+                                <h6 class="text-white">client</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-info  ">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white">7853</h1>
+                                <h6 class="text-white">Page Views</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-primary ">
+                            <div class="box bg-primary text-center">
+                                <h1 class="font-light text-white">0.9s</h1>
+                                <h6 class="text-white">Pages</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-warning">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white">0.5s</h1>
+                                <h6 class="text-white">Avg. Session</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-2">
+                        <div class="widget card-danger">
+                            <div class="box bg-danger text-center">
+                                <h1 class="font-light text-white">38%</h1>
+                                <h6 class="text-white">Bounce Rate</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+ <!--Common Plugins-->
+        <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+		<script src="assets/lib/bootstrap/js/popper.min.js"></script>
+        <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/lib/pace/pace.min.js"></script>
+        <script src="assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+        <script src="assets/lib/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/lib/nano-scroll/jquery.nanoscroller.min.js"></script>
+        <script src="assets/lib/metisMenu/metisMenu.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+		
+        <!-- Flot -->
+        <script src="assets/lib/flot/jquery.flot.js"></script>
+        <script src="assets/lib/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="assets/lib/flot/jquery.flot.resize.js"></script>
+		
+        <!-- Sparkline-->
+        <script src="assets/lib/sparkline/jquery.sparkline.min.js"></script>
+        <script>
+					
+            $('#sparkline1').sparkline([4, 5, 0, 10, 9, 12, 4, 9, 4, 5, 3, 10, 9, 12, 10, 9, 12, 4, 9, 4, 5, 0, 10, 9, 12, 4, 9, 4, 5, 3, 10, 9, 12, 10, 9, 12, 4, 9, 12, 10, 9, 12, 4, 9 ], 
+			{
+				type: 'bar',
+				width: '100%',
+				height: '80',
+				barWidth: '2',
+				resize: true,
+				barSpacing: '6',
+				barColor: 'rgba(255, 255, 255, 0.3)'
+			});
+			
+            $("#sparkline2").sparkline([34, 43, 43, 35, 44, 32, 15, 22, 46, 33, 86, 54, 73, 53, 12, 53, 23, 65, 23, 63, 53, 42, 34, 56, 76, 15, 54, 23, 44], {
+				type: 'line',
+				width: '100%',
+				height: '80',
+				lineColor: '#4150c4',
+				fillColor: '#4150c4',
+				minSpotColor:'#4150c4',
+				maxSpotColor: '#4150c4',
+				highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+				highlightSpotColor: '#4150c4'
+            });
+			
+			$("#sparkline3").sparkline([34, 43, 43, 35, 44, 32, 15, 22, 46, 33, 86, 54, 73, 53, 12, 53, 23, 65, 23, 63, 53, 42, 34, 56, 76, 15, 54, 23, 44], {
+                type: 'line',
+				width: '100%',
+				height: '80',
+				lineColor: '#fff',
+				fillColor: '#f4516c',
+				maxSpotColor: '#f4516c',
+				highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+				highlightSpotColor: '#26c6da'
+            });
+			
+			$('#sparkline4').sparkline([ 4, 5, 2, 10, 9, 12, 4, 9], {
+				type: 'bar',
+				width: '100%',
+				height: '70',
+				barWidth: '8',
+				resize: true,
+				barSpacing: '5',
+				barColor: '#5867dd'
+			});
+			
+			$('#sparkline5').sparkline([ 4, 5, 2, 10, 9, 12, 4, 9], {
+				type: 'bar',
+				width: '100%',
+				height: '70',
+				barWidth: '8',
+				resize: true,
+				barSpacing: '5',
+				barColor: '#66BB6A'
+			});
+			
+			$('#sparkline6').sparkline([ 4, 5, 2, 10, 9, 12, 4, 9], {
+				type: 'bar',
+				width: '100%',
+				height: '70',
+				barWidth: '8',
+				resize: true,
+				barSpacing: '5',
+				barColor: '#f8c200'
+			});
+			
+			$('#sparkline7').sparkline([ 4, 5, 2, 10, 9, 12, 4, 9], {
+				type: 'bar',
+				width: '100%',
+				height: '70',
+				barWidth: '8',
+				resize: true,
+				barSpacing: '5',
+				barColor: '#EF5350'
+			});
+		
+        </script>
+{% endblock content %}

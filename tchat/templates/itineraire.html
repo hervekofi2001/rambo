@@ -1,11 +1,20 @@
-{% extends 'base.html' %}
-{% block content %}
-<!DOCTYPE html>
-<html>
-  <head>
+
+{% extends 'base2.html'%}
+{% load static %}
+{% block conten%}
+
+
     <title>Stockage Mesure | Itineraire</title>
-   </head>
-  <body>
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+       <style type="text/css">
+         #mapid { height: 90vh; }
+       </style>
+
+
+   
     <form method="post" >
       {% csrf_token %}
       <input type="text" name = "latitude" placeholder="latitude">
@@ -17,7 +26,26 @@
       </select>
       <button>Enregistrer</button>
     </form>
-   <h5> {{m|safe}}</h5>
-   </body>
- </html>
+      <div id="mapid"></div>
+      <script type="text/javascript">
+	  console.log(	{{depart}},{{arrivee}})
+         var mymap = L.map('mapid').setView([-7.2561, 4.2637], 13);
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2VpeXV4aSIsImEiOiJja3J2NWZ4ZTEwM2YzMnVyeGYycmVvMWs5In0.mvoQAvMmLan7-ioWtGltqw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+        }).addTo(mymap);
+         L.Routing.control({
+            waypoints: [    
+				{{depart}},{{arrivee}}
+
+            ]
+          }).addTo(mymap);
+		  
+
+       </script>
+
+  
 {% endblock %}
