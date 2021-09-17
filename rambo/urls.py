@@ -11,11 +11,11 @@ from tchat.views import (
     ) 
 
 urlpatterns = [
-    path("login_url", LoginView, name="Login_url"),
+    path('', LoginView, name="Login_url"),
     path("logout_url", LogoutView, name="Logout_url"),
     path('admin/', admin.site.urls),
     path('reflecto/', reflecto,name="reflecto"),
-    path('',home, name="home"), 
+    path('home/',home, name="home"), 
     path('article/<int:id_article>',detail,name ="detail"),
     path('recherche/',search,name ="search"),
     path('contact/',contact,name ="contact"),

@@ -1,0 +1,91 @@
+
+{% extends 'base3.html'%}
+{% load static %}
+{% block content %}
+<div class="row">
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header card-default">
+                            Line type chart
+                        </div>
+                        <div class="card-body">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header card-default">
+                            Bar chart example
+                        </div>
+                        <div class="card-body">
+                                <div class="flot-chart">
+                                     <div class="flot-chart-content" id="flot-bar-chart"></div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-default">
+                            Pie Chart
+                        </div>
+                        <div class="card-body">
+                           <div class="flot-chart">
+                                     <div class="flot-chart-content" id="flot-pie-chart"></div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header card-default">
+                            Moving chart
+                        </div>
+                        <div class="card-body">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart-moving"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-default">
+                            Multiple Axes Line Chart Example 
+                        </div>
+                        <div class="card-body">
+                           <div class="flot-chart">
+                                <div class="flot-chart-content" id="multi-axes-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                   
+
+
+        <script src="{% static 'assets/lib/jquery/dist/jquery.min.js'%}"></script>
+		<script src="{%static 'assets/lib/bootstrap/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/lib/bootstrap/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/lib/pace/pace.min.js'%}"></script>
+		<script src="{% static 'assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js'%}"></script>
+        <script src="{% static 'assets/lib/slimscroll/jquery.slimscroll.min.js'%}"></script>
+        <script src="{% static 'assets/lib/nano-scroll/jquery.nanoscroller.min.js'%}"></script>
+        <script src="{% static 'assets/lib/metisMenu/metisMenu.min.js'%}"></script>
+        <script src="{% static 'assets/js/custom.js'%}"></script>
+
+        <!-- Flot Chart-->
+        <script src="assets/lib/flot/jquery.flot.js"></script>
+        <script src="assets/lib/flot/jquery.flot.resize.js"></script>
+        <script src="assets/lib/flot/jquery.flot.pie.js"></script>
+        <script src="assets/lib/flot/jquery.flot.time.js"></script>
+        <script src="assets/lib/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="assets/js/flot.custom.js"></script>
+
+{% endblock content %}

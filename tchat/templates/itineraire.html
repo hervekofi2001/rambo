@@ -1,7 +1,7 @@
 
 {% extends 'base2.html'%}
 {% load static %}
-{% block conten%}
+{% block content%}
 
 
     <title>Stockage Mesure | Itineraire</title>
@@ -28,7 +28,6 @@
     </form>
       <div id="mapid"></div>
       <script type="text/javascript">
-	  console.log(	{{depart}},{{arrivee}})
          var mymap = L.map('mapid').setView([-7.2561, 4.2637], 13);
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2VpeXV4aSIsImEiOiJja3J2NWZ4ZTEwM2YzMnVyeGYycmVvMWs5In0.mvoQAvMmLan7-ioWtGltqw', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -39,11 +38,12 @@
         }).addTo(mymap);
          L.Routing.control({
             waypoints: [    
-				{{depart}},{{arrivee}}
+				{{depart}},
+        {{arrivee}}
 
             ]
           }).addTo(mymap);
-		  
+		  console.log("hgd")
 
        </script>
 

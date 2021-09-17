@@ -5,7 +5,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView
 from django.contrib import admin, messages
-from .models import Article, Category, Technicien
+from .models import Article, Category, Technicien, Utilisateur
 from .models import Contact,Mesurer,Reflecto, User
 from django.contrib.auth.models import User
 from .models import Reflecto
@@ -47,7 +47,7 @@ def maintenance(request):
 def render_map(request):
        adresses = Adresse.objects.all()
        #creation d'un objet map
-      
+       points = None
        #la liste des coordonnées
        if adresses :
               points = [ [ float(pt.lat), float(pt.lng) ] for pt in adresses ]
@@ -70,7 +70,7 @@ def chatmaps(request):
               lat=request.POST.get('latitude')
               zone=request.POST.get('zone')
               adresses.lng = lng
-              adresses.lat = lng
+              adresses.lat = lat
               adresses.zone = Zone.objects.get(id=int(zone))
               adresses.save()
               return redirect("chatmaps")
@@ -78,15 +78,17 @@ def chatmaps(request):
               
               
 def itineraire(request):
-       ptdepart = [ 	5.316667,-4.033333]
-       ptarrivé =  [5.316667,-4.033333]
+       ptdepart = [ 5.320371637795692, -4.012542557526034]
+       ptarrivé =  [5.3444608, -4.0173568]
        gps = Contact.objects.last().gps
        print(gps)
        if gps:
-              ptarrivé = f"{gps}".split(";")
+              ptarrivé = gps.split(";")
+              ptarrivé  = [ float(i) for i in ptarrivé ]
+              print("OUVEAU ", ptarrivé, type(ptarrivé))
        context = {
           "depart": ptdepart,
-          "arrivee": ptarrivé
+          "arrivee": list(ptarrivé)
        }
        print(context)
        return render(request,"itineraire.html", context)
@@ -197,9 +199,14 @@ def LoginView(request):
               if form.is_valid():
                      username = form.cleaned_data.get('username')
                      pwd = form.cleaned_data.get('pwd')
-                     user = authenticate(username='username', password='pwd')
+                     user = authenticate(username= username, password= pwd )
                      if user:
                             login(request, user)
+                            # vérifications
+
+                            if user.is_superuser :
+                                   return redirect("dashbord")
+
                             return redirect('home')
                      else:
                            
@@ -209,7 +216,7 @@ def LoginView(request):
 def LogoutView(request):
 
        logout(request)
-       return redirect('/Login_url')
+       return redirect('/')
 
 
 
@@ -285,7 +292,7 @@ class modifierArticle(UpdateView):
 
 def visuel(request):
         
-       return render(request, "visuel.html")
+       return render(request, "statistique.html")
 
 def dashbord(request):
        client=Contact.objects.all().count()

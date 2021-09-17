@@ -35,7 +35,7 @@
  </html>
 
  <script type="text/javascript">
-   var mymap = L.map('mapid').setView([	-4.033333,	5.316667], 13);
+   var mymap = L.map('mapid').setView([	-5.547099500000002, 7.5468545], 5);
  
    
 
@@ -45,18 +45,22 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
 }).addTo(mymap);
 
    navigator.geolocation.getCurrentPosition(function (position) {
       let coords = position.coords;
-      var marker = L.marker([coords.latitude, coords.longitude]).addTo(mymap);
+      var redIcon = L.icon({iconUrl: "{% static 'img/bxs-map.svg' %}" })
+      var marker = L.marker(
+        [coords.latitude, coords.longitude],
+        { icon: redIcon, iconSize: [15, 15] }
+      ) 
+      .addTo(mymap);
     });
 	{% for pt in points %}
       L.marker({{pt}}).addTo(mymap);
-	
-
+      
 	{% endfor %}
+  console.log({{points}}, "zoma")
 	mymap.fitBounds({{points}})
  </script>
 {% endblock %}

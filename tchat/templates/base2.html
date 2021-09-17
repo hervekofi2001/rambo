@@ -193,11 +193,11 @@
 									<li class="dropdown-divider"></li>
 									   {% if user.is_authenticated %}
 									<li>
-										<a class="dropdown-item" href="/logout_url"><i class="icon-logout"></i> Deconnexion</a>
+										<a class="dropdown-item" href="/"><i class="icon-logout"></i> Deconnexion</a>
 									</li>
 										{% else %}
 									<li>
-										<a class="dropdown-item" href="/login_url"><i class="icon-logout"></i> Deconnexion</a>
+										<a class="dropdown-item" href="/login_url"><i class="icon-logout"></i> connexion</a>
 									</li>
 										{% endif %}
 
@@ -312,7 +312,7 @@
 					
                     <ul class="metisMenu nav flex-column" id="menu">
                         <li class="nav-heading"><span>MAIN</span></li>
-						<li class="nav-item active"><a class="nav-link" href="/"><i class="fa fa-home"></i> <span class="toggle-none">Home<span class="badge badge-pill badge-danger float-right mr-2">1.0</span></span></a></li>						
+						<li class="nav-item active"><a class="nav-link" href="/home"><i class="fa fa-home"></i> <span class="toggle-none">Home<span class="badge badge-pill badge-danger float-right mr-2">1.0</span></span></a></li>						
                         <li class="nav-item">
     
                         </li>
@@ -351,16 +351,8 @@
                         </li>
 						
 						<li class="nav-item">
-                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-bar-chart"></i> <span class="toggle-none">Charts <span class="fa arrow"></span>  <span class="badge badge-pill badge-success float-right mr-2">7</span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-                                <li class="nav-item"><a class="nav-link" href="chart-flot.html">Flot</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-morris.html">Morris</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-radial.html">Radial</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-c3.html">C3</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-sparkline.html">Sparkline</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-rickshaw.html">Rickshaw</a></li>
-                                <li class="nav-item"><a class="nav-link" href="chart-chartjs.html">ChartJs</a></li>
-                            </ul>
+  
+                            
                         </li>
 						
                         <li class="nav-item">
@@ -413,13 +405,10 @@
 		<div class="row page-header">
 				<div class="col-lg-6 align-self-center ">
 				  <h2>Dashboard</h2>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">accueil</li>
-					</ol>
+					
 				</div>
 				<div class="col-lg-6 align-self-center text-right">
-					<a href="#" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+					<a href="#" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Creer nouveau</a>
 				</div>
 		</div>
 		
